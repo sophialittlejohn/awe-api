@@ -8,27 +8,27 @@ RUN apt-get update && apt-get upgrade -qqy \
     libssl-dev \
     openssh-server
 
+# ssh Server
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
 RUN sed -i '/PermitRootLogin/c\PermitRootLogin yes' /etc/ssh/sshd_config
 
-# SSH login fix. Otherwise user is kicked off after login
+# SSH login fix. Otherwise user is kicked out after login
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-# Create some folders
+
 RUN mkdir -p /app | \
     mkdir -p /media-files | \
-    mkdir -p /static-files
+    mkdir -p /static-files | \
+    mkdir -p /database
 
 COPY ./app/requirements.yml /app/requirements.yml
 RUN /opt/conda/bin/conda env create -f /app/requirements.yml
 
-# Activate conda environment
 ENV PATH /opt/conda/envs/app/bin:$PATH
-RUN sed '$ a conda activate app' -i /root/.bashrc
 
 COPY ./app /app
 

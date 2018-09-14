@@ -20,12 +20,14 @@ class Student(models.Model):
         verbose_name='address',
         to='people.Address',
         on_delete=models.CASCADE,
-        blank=False
+        blank=True,
+        null=True
     )
     phones = models.CharField(
         verbose_name='phone numbers',
         max_length=12,
-        blank=False
+        blank=True,
+        null=True
     )
     mother_name = models.CharField(
         verbose_name='mother name',
@@ -59,7 +61,6 @@ class Student(models.Model):
     )
     registered = models.BooleanField(
         verbose_name='registered',
-        blank=False
     )
     start_date = models.DateField(
         verbose_name='start date'
