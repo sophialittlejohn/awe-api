@@ -60,7 +60,9 @@ class Staff(models.Model):
     )
     old_ahv = models.CharField(
         max_length=14,
-        verbose_name='old AHV Number'
+        verbose_name='old AHV Number',
+        blank=True,
+        null=True
     )
     ahv = models.CharField(
         max_length=16,
@@ -70,14 +72,13 @@ class Staff(models.Model):
         verbose_name='profession',
         max_length=100
     )
-    date_hired = models.DateField()
-    date_left = models.DateField(
+    date_hired = models.DateField(
         blank=True,
         null=True
     )
-    last_day = models.DateField(
+    date_left = models.DateField(
         blank=True,
-        null=True,
+        null=True
     )
     start_salary = models.IntegerField()
     first_aid = models.ForeignKey(

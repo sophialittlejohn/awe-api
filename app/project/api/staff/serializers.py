@@ -45,7 +45,6 @@ class StaffDetailSerializer(serializers.ModelSerializer):
             'profession',
             'date_hired',
             'date_left',
-            'last_day',
             'start_salary',
             'first_aid',
             'salary_raise_date',

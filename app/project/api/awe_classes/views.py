@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from project.api.awe_classes.serializers import AWEClassSerializer, AWEClassDetailSerializer
@@ -11,13 +11,19 @@ class ListAllClassesView(ListAPIView):
     permission_classes = [IsAuthenticated]
 
 
-class ClassDetailView(ListAPIView):
-    """
-        Get student by student ID
-    """
+class ClassDetailView(RetrieveAPIView):
     serializer_class = AWEClassDetailSerializer
     queryset = AWEClass.objects.all()
-    permission_classes = [IsAuthenticated, IsAdminUser]
+    permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
-        return AWEClass.objects.filter(id=self.kwargs.get('pk'))
+
+class CreateClassView(ListCreateAPIView):
+    serializer_class = AWEClassDetailSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = AWEClass.objects.all()
+
+
+class UpdateClassView(UpdateAPIView):
+    serializer_class = AWEClassDetailSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = AWEClass.objects.all()

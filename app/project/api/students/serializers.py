@@ -6,7 +6,7 @@ from project.people.models import Student
 
 class StudentDetailSerializer(serializers.ModelSerializer):
     awe_class = AWEClassSerializer(many=True, read_only=True)
-    #address = AddressSerializer()
+    address = AddressSerializer()
 
     class Meta:
         model = Student
@@ -30,6 +30,7 @@ class StudentDetailSerializer(serializers.ModelSerializer):
             'discount',
             'notes',
         ]
+        read_only_fields = ['id']
 
 
 class StudentsSerializer(serializers.ModelSerializer):
