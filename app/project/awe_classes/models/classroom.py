@@ -5,8 +5,8 @@ class Classroom(models.Model):
     TH = 'Therwil'
     RH = 'Riehen'
     LOCATION_CHOICES = (
-        (TH, 'Therwil'),
-        (RH, 'Riehen')
+        ('Therwil', 'Therwil'),
+        ('Riehen', 'Riehen')
     )
     name = models.CharField(
         max_length=50,

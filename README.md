@@ -10,11 +10,9 @@
 ## Endpoints
 
 ### Login
-- `/auth/token/`
+- `/auth/token/` POST: access and refresh tokens
 - `/auth/token/verify/` 
 - `/auth/token/refresh/` 
-- `/auth/password-reset/`
-- `/auth/password-reset/verify/`
 
 ### Students
 - `/students` GET: all students 
@@ -23,11 +21,11 @@
 
 ### Staff
 - `/staff/` GET: all staff
-- `staff/<int:staff_id>/` POST & GET & PATCH: CRUD - admin only for create/update
+- `/staff/<int:staff_id>/` POST & GET & PATCH: CRUD - admin only for create/update
 
 ### Classes
 - `/class/` GET: all classes
-- `/class/<int:class_id>/` GET: detail class info by class_id
+- `/class/<int:class_id>/` POST & GET & PATCH: CRUD - admin only for create/update
 
 ### Sessions
 - `/session/` GET: all session

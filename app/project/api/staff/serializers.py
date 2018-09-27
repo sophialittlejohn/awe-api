@@ -26,7 +26,7 @@ class StaffNameSerializer(serializers.ModelSerializer):
 
 
 class StaffDetailSerializer(serializers.ModelSerializer):
-    # address = AddressSerializer()
+    #address = AddressSerializer()
 
     class Meta:
         model = Staff

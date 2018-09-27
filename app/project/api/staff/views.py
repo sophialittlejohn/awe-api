@@ -27,9 +27,3 @@ class UpdateStaffView(UpdateAPIView):
     serializer_class = StaffDetailSerializer
     permission_classes = [IsAdminUser]
     queryset = Staff.objects.all()
-
-
-class UpdateStaffView(DestroyAPIView):
-    serializer_class = StaffDetailSerializer
-    permission_classes = [IsAdminUser]
-    queryset = Staff.objects.all()

@@ -14,18 +14,36 @@ class ListAllStudentsView(ListAPIView):
         query = self.request.query_params
         if query.get('first_name'):
             first_name = query.get('first_name')
-            return Student.objects.filter(first_name__icontains=first_name)
+            return Student.objects.filter(first_name__icontains=first_name).order_by('first_name', 'last_name')
         elif query.get('last_name'):
             last_name = query.get('last_name')
-            return Student.objects.filter(last_name__icontains=last_name)
+            return Student.objects.filter(last_name__icontains=last_name).order_by('last_name', 'first_name')
         elif query.get('teacher'):
             first_name = query.get('teacher')
-            return Student.objects.filter(awe_class__teacher__first_name__icontains=first_name)
-        elif query.get('current'):
-            return Student.objects.filter(end_date__isnull=True)
-        elif query.get('past'):
-            return Student.objects.filter(end_date__isnull=False)
-        return Student.objects.all()
+            return Student.objects.filter(awe_class__teacher__first_name__icontains=first_name).order_by('first_name', 'last_name')
+        # elif query.get('current'):
+        #     return Student.objects.filter(end_date__isnull=True)
+        # elif query.get('past'):
+        #     return Student.objects.filter(end_date__isnull=False)
+        return Student.objects.all().order_by('last_name', 'first_name')
+
+
+class ListAllCurrentStudentsView(ListAPIView):
+    serializer_class = StudentsSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = Student.objects.all()
+
+    def get_queryset(self):
+        return Student.objects.all().order_by('start_date', 'first_name')
+
+
+class ListAllPastStudentsView(ListAPIView):
+    serializer_class = StudentsSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = Student.objects.all()
+
+    def get_queryset(self):
+        return Student.objects.all().order_by('end_date', 'start_date')
 
 
 class StudentDetailView(RetrieveAPIView):

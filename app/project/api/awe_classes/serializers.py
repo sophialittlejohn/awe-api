@@ -48,10 +48,10 @@ class FirstAidSerializer(serializers.ModelSerializer):
 
 
 class AWEClassDetailSerializer(serializers.ModelSerializer):
-    teacher = StaffSerializer(many=True)
-    class_room = ClassroomSerializer()
-    session = SessionSerializer()
-    books = BookSerializer()
+    teacher = StaffSerializer(many=True, read_only=True)
+    class_room = ClassroomSerializer(read_only=True)
+    session = SessionSerializer(read_only=True)
+    books = BookSerializer(read_only=True)
 
     class Meta:
         model = AWEClass

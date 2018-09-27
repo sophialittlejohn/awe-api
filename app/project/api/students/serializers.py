@@ -11,6 +11,7 @@ class StudentDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = [
+            'id',
             'first_name',
             'last_name',
             'awe_class',
@@ -38,6 +39,7 @@ class StudentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = [
+            'id',
             'first_name',
             'last_name',
             'awe_class',
@@ -47,5 +49,6 @@ class StudentsSerializer(serializers.ModelSerializer):
             'father_name',
             'registered',
             'start_date',
+            'end_date',
             'notes',
         ]

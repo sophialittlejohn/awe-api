@@ -5,10 +5,10 @@ class AWEClass(models.Model):
     PROGRAM_CHOICES = (
         ('ESOL', 'ESOL'),
         ('EFES', 'EES'),
-        ('PRES', 'Preschool'),
-        ('PRIV', 'Private'),
-        ('SPTH', 'Speech Therapy'),
-        ('TUTR', 'Tutoring')
+        ('Preschool', 'Preschool'),
+        ('Private', 'Private'),
+        ('Speech Therapy', 'Speech Therapy'),
+        ('Tutoring', 'Tutoring')
     )
     DAY_CHOICES = (
         ('Monday', 'Monday'),
@@ -47,7 +47,7 @@ class AWEClass(models.Model):
     )
     program = models.CharField(
         choices=PROGRAM_CHOICES,
-        max_length=4,
+        max_length=15,
         verbose_name='program'
     )
     session = models.ForeignKey(
