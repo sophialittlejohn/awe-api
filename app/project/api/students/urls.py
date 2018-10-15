@@ -1,7 +1,7 @@
 from django.urls import path
 
 from project.api.students.views import ListAllStudentsView, StudentDetailView, CreateStudentView, UpdateStudentView, \
-    ListAllPastStudentsView, ListAllCurrentStudentsView
+    ListAllPastStudentsView, ListAllCurrentStudentsView, FilterAllStudents
 
 app_name = 'students'
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('<int:pk>/', StudentDetailView.as_view(), name='student_detail'),
     path('new/', CreateStudentView.as_view(), name='new_student'),
     path('update/<int:pk>/', UpdateStudentView.as_view(), name='new_student'),
+    path('asc/', FilterAllStudents.as_view(), name='students_asc'),
 ]
