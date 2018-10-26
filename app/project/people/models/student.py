@@ -21,8 +21,6 @@ class Student(models.Model):
     gender = models.TextField(
         choices=GENDER_CHOICES,
         max_length=6,
-        blank=True,
-        null=True
     )
     email = models.EmailField(
         verbose_name='email',
