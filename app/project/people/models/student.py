@@ -2,6 +2,11 @@ from django.db import models
 
 
 class Student(models.Model):
+    GENDER_CHOICES = (
+        ('m', 'Male'),
+        ('f', 'Female'),
+        ('o', 'Other')
+    )
     first_name = models.CharField(
         verbose_name='first name',
         max_length=30,
@@ -12,6 +17,12 @@ class Student(models.Model):
     )
     birthdate = models.DateField(
         verbose_name='birthday',
+    )
+    gender = models.TextField(
+        choices=GENDER_CHOICES,
+        max_length=6,
+        blank=True,
+        null=True
     )
     email = models.EmailField(
         verbose_name='email',

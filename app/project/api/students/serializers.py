@@ -14,6 +14,7 @@ class StudentDetailSerializer(serializers.ModelSerializer):
             'id',
             'first_name',
             'last_name',
+            'gender',
             'awe_class',
             'birthdate',
             'email',
