@@ -79,9 +79,10 @@ class Student(models.Model):
         blank=True,
         null=True
     )
-    awe_class = models.ManyToManyField(
+    awe_class = models.ForeignKey(
         verbose_name='class',
         to='awe_classes.AWEClass',
+        on_delete=models.CASCADE
     )
     cost_per_class = models.IntegerField(
         verbose_name='cost per class',

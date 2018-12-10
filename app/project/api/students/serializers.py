@@ -5,7 +5,7 @@ from project.people.models import Student
 
 
 class StudentDetailSerializer(serializers.ModelSerializer):
-    awe_class = AWEClassSerializer(many=True, read_only=True)
+    awe_class = AWEClassSerializer(read_only=True)
     address = AddressSerializer()
 
     class Meta:

@@ -56,6 +56,7 @@ class AWEClassDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = AWEClass
         fields = [
+            'id',
             'name',
             'teacher',
             'day',
@@ -78,6 +79,7 @@ class AWEClassSerializer(serializers.ModelSerializer):
     class Meta:
         model = AWEClass
         fields = [
+            'id',
             'name',
             'teacher',
             'day',
